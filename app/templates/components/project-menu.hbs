@@ -5,6 +5,11 @@
     <li class="contributors">
       {{#link-to 'project.settings.contributors' project}}Contributors {{#if project.hasPendingMembers}}<span class="info"><strong>{{project.pendingMembersCount}}</strong> pending</span>{{/if}}{{/link-to}}
     </li>
-    <li>{{#link-to 'project.settings.profile' project}}Settings{{/link-to}}</li>
+    <li>
+      {{#link-to 'project.settings.donations' project}}Donations{{/link-to}}
+    </li>
+    <li>
+      {{#link-to 'project.settings.profile' project}}Settings{{/link-to}}
+    </li>
   {{/if}}
 {{/if}}
