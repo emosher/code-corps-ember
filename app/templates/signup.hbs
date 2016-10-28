@@ -1,3 +1,5 @@
 {{title "Sign up"}}
 
-{{signup-form}}
+{{signup-form user=model
+  signIn=(route-action "signIn")
+  handleErrors=(route-action "handleErrors")}}
