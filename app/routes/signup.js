@@ -9,7 +9,7 @@ const {
 
 export default Route.extend(UnauthenticatedRouteMixin, {
   model() {
-    return this.get('store').createRecord('user')
+    return this.get('store').createRecord('user');
   },
 
   session: service(),
@@ -21,7 +21,7 @@ export default Route.extend(UnauthenticatedRouteMixin, {
 
     handleErrors(error) {
       let { errors, status } = error;
-      let payloadContainsValidationErrors = errors.some((error) => status === 422);
+      let payloadContainsValidationErrors = errors.some(() => status === 422);
 
       if (!payloadContainsValidationErrors) {
         set(this, 'controller.signup.error', error);
