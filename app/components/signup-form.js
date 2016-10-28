@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import { task } from 'ember-concurrency';
 
 const {
   Component,
@@ -37,7 +38,7 @@ export default Component.extend({
 
     signUp() {
       if (this.get('canSubmit')) {
-        this._submit();
+        this.get('_submit').perform();
       } else {
         this._shakeButton();
       }
@@ -67,13 +68,13 @@ export default Component.extend({
     }
   },
 
-  _submit() {
+  _submit: task(function* () {
     let credentials = {
       identification: this.get('user.email'),
       password: this.get('user.password')
     };
 
-    this.get('user').save().then(() => {
+    let promise = this.get('user').save().then(() => {
       this._signIn(credentials);
     }).catch((error) => {
       let payloadContainsValidationErrors = error.errors.some((error) => error.status === 422);
@@ -82,5 +83,6 @@ export default Component.extend({
         this.controllerFor('signup').set('error', error);
       }
     });
-  }
+    yield promise;
+  }).drop()
 });
