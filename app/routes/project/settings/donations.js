@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 const {
+  get,
   inject: { service },
   Route
 } = Ember;
@@ -14,7 +15,7 @@ export default Route.extend({
   },
 
   afterModel(model) {
-    this.store.queryRecord('stripe-auth', {
+    get(this, 'store').queryRecord('stripe-auth', {
       projectId: model.id
     }).then((result) => {
       this.controller.set('stripeAuth', result);

@@ -6,9 +6,7 @@ const {
 } = Ember;
 
 export default ApplicationAdapter.extend({
-  urlForQueryRecord(query) {
-    query = query || {};
-
+  urlForQueryRecord(query = {}) {
     // if there's a projectId property in the query, we
     // need to build the url as (prefix/)host/projects/projectId/stripe-auth
     if (query.projectId) {
