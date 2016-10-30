@@ -1,4 +1,4 @@
-<li>{{#link-to 'About' 'project.index' project}}</li>
+<li>{{link-to 'About' 'project.index' project}}</li>
 <li>{{#link-to 'project.tasks' project}}Tasks {{#if project.hasOpenTasks}}<span class="info">{{project.openTasksCount}}</span>{{/if}}{{/link-to}}</li>
 {{#if session.isAuthenticated}}
   {{#if (can "manage organization" project.organization membership=credentials.currentUserMembership)}}
@@ -9,7 +9,7 @@
       {{link-to 'Donations' 'project.settings.donations' project}}
     </li>
     <li>
-      {{#link-to 'Settings' 'project.settings.profile' project}}
+      {{link-to 'Settings' 'project.settings.profile' project}}
     </li>
   {{/if}}
 {{/if}}

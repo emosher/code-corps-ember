@@ -5,20 +5,14 @@ moduleForComponent('stripe-connect-button', 'Integration | Component | stripe co
   integration: true
 });
 
-test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+test('it renders all required elements', function(assert) {
+  assert.expect(2);
 
-  this.render(hbs`{{stripe-connect-button}}`);
+  let url = 'https://stripe.com';
 
-  assert.equal(this.$().text().trim(), '');
+  this.set('url', url);
+  this.render(hbs`{{stripe-connect-button url=url}}`);
 
-  // Template block usage:
-  this.render(hbs`
-    {{#stripe-connect-button}}
-      template block text
-    {{/stripe-connect-button}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$('.stripe-connect').attr('href'), url);
+  assert.equal(this.$('.stripe-connect').text(), 'Connect with Stripe');
 });
