@@ -13,5 +13,5 @@ export default create({
   stripeConnectButton: {
     scope: '.stripe-connect',
     href: attribute('href')
-  },
+  }
 });
