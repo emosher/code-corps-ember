@@ -15,7 +15,6 @@ export default Model.extend({
   longDescriptionMarkdown: attr(),
   openTasksCount: attr('number'),
   slug: attr(),
-  stripeButtonUrl: attr(),
   title: attr(),
 
   organization: belongsTo('organization', { async: true }),
